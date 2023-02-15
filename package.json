@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/gabrielroquim/TCC-EBAC-QE/issues"
   },
-  "homepage": "https://github.com/gabrielroquim/TCC-EBAC-QE#readme"
+  "homepage": "https://github.com/gabrielroquim/TCC-EBAC-QE#readme",
+  "dependencies": {
+    "cypress": "^12.6.0"
+  }
 }
