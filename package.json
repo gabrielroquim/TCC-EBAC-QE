@@ -1,0 +1,19 @@
+{
+  "name": "tcc-ebac-qe",
+  "version": "1.0.0",
+  "description": "Projeto Final EBAC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielroquim/TCC-EBAC-QE.git"
+  },
+  "author": "Gabriel Roquim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielroquim/TCC-EBAC-QE/issues"
+  },
+  "homepage": "https://github.com/gabrielroquim/TCC-EBAC-QE#readme"
+}
