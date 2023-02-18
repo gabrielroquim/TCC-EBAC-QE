@@ -1,41 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
 name: CI
 
-# Comantos de configuração.
+# Controls when the workflow will run
 on:
-  # sempre que tiver um envio para origin ele vai executar estes comandos
-  # Gatilhos de execuções, podendo agendar apra um determinado horário
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
+    branches: [ main ]
 
-  # Abilitar workflow manualmente
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Tarefas do workflow
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Onde quero executar o fluxo de trabalho
+  # This workflow contains a single job called "build"
   build:
-    # Executar em um windows-latest, ubuntu-latest
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Qual versão do node vai ser utilizada
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    # Configurações
-    # Configuração que instala o node
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - uses: actions/checkout@v2
+          node-version: 14
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         continue-on-error: true
-      #comandos necessários para executar a aplicação da mesma forma que no PCs
-      - run: npm install
-      - run: npx cypress run --config video=true --env allure=true --browser chrome --record --key 26303146-a7a4-4226-a249-bf1a12f2fdd8
-      # - run: node runner.js
-      #Geração do relatório em HTML allure-reports
+        with:                  
+          install-comand: npm install
+          browser: chrome       
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v3
         with:
