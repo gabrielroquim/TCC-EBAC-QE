@@ -41,16 +41,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           results-dir: allure-results
           report-dir: allure-report
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
-
-          
-  
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+            GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
+            BRANCH: gh-pages
+            FOLDER: allure-report
