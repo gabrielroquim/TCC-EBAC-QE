@@ -43,6 +43,10 @@ jobs:
         with:
           results-dir: allure-results
           report-dir: allure-report
+
+        #Enviar para o git hub pages
+      - name: Deploy to GitHub Pages
+        uses: projeto/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
           BRANCH: gh-pages
