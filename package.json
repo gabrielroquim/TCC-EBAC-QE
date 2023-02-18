@@ -18,5 +18,8 @@
   "homepage": "https://github.com/gabrielroquim/TCC-EBAC-QE#readme",
   "dependencies": {
     "cypress": "^12.6.0"
+  },
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.35.2"
   }
 }

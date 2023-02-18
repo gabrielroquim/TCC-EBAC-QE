@@ -2,7 +2,7 @@
 
 describe('Login EBAC shop', () => {
   beforeEach(() =>{
-    cy.visit('/')
+    cy.visit('/minha-conta/')
   })
   it('Login válido', () => {
     
