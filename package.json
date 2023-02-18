@@ -7,8 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "npx cypress open",
     "cy:report": "npx mochawesome-merge ./mochawesome-report/mochawesome*.json  > mochawesome-report/report.json && npx marge mochawesome-report/report.json",
-    "test:allure": "npx cypress run --env allure=true",
-    "allure:open": "npx allure serve",
+    "cy:allureGenerete": "allure generate allure-results",
+    "cy:reportTesults": "node runner.js",
+    "cy:allureOpen": "allure open allure-report",
     "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8"
   },
   "repository": {
