@@ -1,35 +1,53 @@
-name: CI
+name: EBAC-MODULO-11
 
-# Controls when the workflow will run
+# Comantos de configuração.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # sempre que tiver um envio para origin ele vai executar estes comandos
+  # Gatilhos de execuções, podendo agendar apra um determinado horário
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+    branches: [main]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Abilitar workflow manualmente
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Tarefas do workflow
 jobs:
-  # This workflow contains a single job called "build"
+  # Onde quero executar o fluxo de trabalho
   build:
-    # The type of runner that the job will run on
+    # Executar em um windows-latest, ubuntu-latest
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Qual versão do node vai ser utilizada
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    # Configurações
+    # Configuração que instala o node
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.2
         with:
-          node-version: 14
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        continue-on-error: true
-        with:                  
-          install-comand: npm install
-          browser: chrome       
-      - name: Publish Report
-        uses: peaceiris/actions-gh-pages@v3
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      #comandos necessários para executar a aplicação da mesma forma que no PC
+      - run: npm install
+
+      - run: npx cypress run --config video=true --env allure=true --browser chrome --record --key ad7e7e2c-7f7c-48f1-8f1c-8c8098294edc
+      # - run: node runner.js
+      #Geração do relatório em HTML allure-report
+      - name: Allure report V2
+        uses: QuintilianoNery/action-allure-report-V2@0.2.0
         with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./mochawesome-report
+          results-dir: allure-results
+          report-dir: allure-report
+
+        #Enviar para o git hub pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
+          BRANCH: gh-pages
+          FOLDER: allure-report
