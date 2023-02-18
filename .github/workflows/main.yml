@@ -5,9 +5,9 @@ on:
   # sempre que tiver um envio para origin ele vai executar estes comandos
   # Gatilhos de execuções, podendo agendar apra um determinado horário
   push:
-    branches: [main]
+    branches: [gabrielroquim-patch-1]
   pull_request:
-    branches: [main]
+    branches: [gabrielroquim-patch-1]
 
   # Abilitar workflow manualmente
   workflow_dispatch:
@@ -37,17 +37,16 @@ jobs:
 
       - run: npx cypress run --config video=true --env allure=true --browser chrome --record --key 26303146-a7a4-4226-a249-bf1a12f2fdd8
       # - run: node runner.js
-      #Geração do relatório em HTML allure-report
-        - name: Allure report V2
-          uses: QuintilianoNery/action-allure-report-V2@0.2.0
-          with:
-            results-dir: allure-results
-            report-dir: allure-report
-
-          #Enviar para o git hub pages
-        - name: Deploy to GitHub Pages
-          uses: JamesIves/github-pages-deploy-action@3.7.1
-          with:
-            GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
-            BRANCH: gh-pages
-            FOLDER: allure-report
+      #Geração do relatório em HTML allure-reports
+      - name: Allure report V2
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          results-dir: allure-results
+          report-dir: allure-report
+        #Enviar para o git hub pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
+          BRANCH: gh-pages
+          publish_dir: ./public
