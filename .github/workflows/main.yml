@@ -36,7 +36,7 @@ jobs:
       # - run: node runner.js
       #Geração do relatório em HTML allure-reports
       - name: Allure report V2
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           results-dir: allure-results
