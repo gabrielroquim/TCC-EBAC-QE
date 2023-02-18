@@ -4,7 +4,10 @@
   "description": "Projeto Final EBAC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "npx cypress open",
+    "test:allure": "npx cypress run --env allure=true",
+    "allure:open": "npx allure serve"
   },
   "repository": {
     "type": "git",
