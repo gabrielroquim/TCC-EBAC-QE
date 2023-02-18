@@ -39,7 +39,7 @@ jobs:
       # - run: node runner.js
       #Geração do relatório em HTML allure-report
       - name: Allure report V2
-        uses: gabrielroquim/action-allure-report-V2@0.2.0
+        uses: peaceiris/actions-gh-pages@v3
         with:
           results-dir: allure-results
           report-dir: allure-report
