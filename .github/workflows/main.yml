@@ -40,7 +40,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           results-dir: allure-results
-          report-dir: allure-report
+          publish_dir: allure-report
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
