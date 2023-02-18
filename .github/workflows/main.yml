@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
-      #comandos necessários para executar a aplicação da mesma forma que no PC
+      #comandos necessários para executar a aplicação da mesma forma que no PCs
       - run: npm install
       - run: npx cypress run --config video=true --env allure=true --browser chrome --record --key 26303146-a7a4-4226-a249-bf1a12f2fdd8
       # - run: node runner.js
