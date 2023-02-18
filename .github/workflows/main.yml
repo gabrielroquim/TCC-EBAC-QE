@@ -37,7 +37,7 @@ jobs:
 
       - run: npx cypress run --config video=true --env allure=true --browser chrome --record --key 26303146-a7a4-4226-a249-bf1a12f2fdd8
       # - run: node runner.js
-      #Geração do relatório em HTML allure-reports
+      #Geração do relatório em HTML allure-report
       - name: Allure report V2
         uses: peaceiris/actions-gh-pages@v3
         with:
