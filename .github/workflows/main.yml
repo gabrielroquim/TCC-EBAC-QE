@@ -5,9 +5,9 @@ on:
   # sempre que tiver um envio para origin ele vai executar estes comandos
   # Gatilhos de execuções, podendo agendar apra um determinado horário
   push:
-    branches: [main]
+    branches: [gabrielroquim-patch-1]
   pull_request:
-    branches: [main]
+    branches: [gabrielroquim-patch-1]
 
   # Abilitar workflow manualmente
   workflow_dispatch:
