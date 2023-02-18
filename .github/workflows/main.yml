@@ -45,12 +45,11 @@ jobs:
           report-dir: allure-report
         #Enviar para o git hub pages
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
-        with:         
-          BRANCH: gh-pages
-          FOLDER: allure-report
+        uses: peaceiris/github-pages-deploy-action@3.7.1
+        with:
           GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
-          publish_dir: ./allure-report
+          BRANCH: gh-pages
+          publish_dir: ./public
        
           
 
