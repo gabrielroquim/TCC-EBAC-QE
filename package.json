@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:run": "npx cypress run",
-    "cy:api": "cypress run --spec api/integration/*.spec.js"
+    "cy:api": "cypress run --cy cypress/api/integration/*.cy.js"
   },
   "repository": {
     "type": "git",

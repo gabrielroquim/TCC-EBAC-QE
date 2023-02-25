@@ -1,14 +1,28 @@
-/// <reference types="cypress" />
-const req = require('supertest');
+///<reference types="cypress" />
+const request = require('supertest');
+const authorization = require('../utils/utils.json')
 
 describe('Login - API CUPOM SHOP', () => {
-    let token
-    before(() => {
-        cy.token('admin_ebac', '@admin!&b@c!2022').then(tkn => { token = tkn })  // vai usar o commands, criei uma variavel tkn , ela vai reeber o token
+        
+
+    it.only('Login', () => {
+        cy.request({
+            method: 'POST',
+            url: 'http://lojaebac.ebaconline.art.br/rest-api/docs/#/coupons/post_wc_v3_coupons',
+            body: {
+                "username": "admin_ebac",
+                "paswword": "@admin!&b@c!2022"
+            }
+
+        }).then((response) => {
+            expect(response.status).to.equal(200)
+            expect(response.body.message).to.equal('Login realizado com sucesso')
+            cy.log(response.body.authorization)
+        }) 
     });
     
     it('Realizando POST de cupom já existente', () => {
-        request('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
+        cy.request('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
             .post('/coupons')
             .send({
                 "code": "nomeCupom",
