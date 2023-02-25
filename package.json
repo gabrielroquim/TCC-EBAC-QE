@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:run": "npx cypress run",
-    "cy:api": "cypress run --cy cypress/api/integration/*.cy.js"
+    "api": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/gabrielroquim/TCC-EBAC-QE#readme",
   "dependencies": {
-    "allure": "^0.0.0",
+    "@types/jest": "^29.4.0",
     "allure-commandline": "^2.21.0",
     "cypress": "^12.6.0",
     "jest": "^29.4.3",
