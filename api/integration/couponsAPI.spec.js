@@ -1,6 +1,6 @@
 const req = require('supertest');
 const authorization = require('../utils/token.json')
-
+const API_URL = process.env.API_URL
 
 
 describe('API de cupons Loja EBAC', () => {
@@ -17,11 +17,8 @@ describe('API de cupons Loja EBAC', () => {
                 expect(response.body).toBeDefined()
                 expect(response.body).toBeInstanceOf(Array)            
                 expect(response.body.code).toBe(undefined)
-                const  ler = response.body
-                expect([ler]).toMatchObject([
-                    {foo: 'bar'},
-                    {baz: 1},
-                ])
+                expect(response.body.id).not.toBe(undefined)
+             
             })
     });
 
