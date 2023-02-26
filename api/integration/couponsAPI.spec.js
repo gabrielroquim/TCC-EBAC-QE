@@ -7,8 +7,7 @@ describe('API de cupons Loja EBAC', () => {
     let token = "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy"
 
     it.only('Realizando um GET de cupons', async () => {
-
-        return req('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
+        return req(API_URL)
             .get('/coupons')
             .set('Accept', 'application/json')
             .set("Authorization", JSON.stringify(token))
@@ -16,9 +15,7 @@ describe('API de cupons Loja EBAC', () => {
                 expect(response.status).toBe(200)
                 expect(response.body).toBeDefined()
                 expect(response.body).toBeInstanceOf(Array)            
-                expect(response.body.code).toBe(undefined)
-                expect(response.body.id).not.toBe(undefined)
-             
+                expect(response.body.code).toBe(undefined)              
             })
     });
 
