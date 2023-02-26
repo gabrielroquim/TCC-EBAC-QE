@@ -10,6 +10,13 @@
     "test:CheckGET": "jest --testNamePattern=CheckGET",
     "test:CheckPOST": "jest --testNamePattern=CheckPOST"
   },
+  "jest": {
+    "testTimeout": 20000,
+    "testEnvironment": "node",
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielroquim/TCC-EBAC-QE.git"
