@@ -6,7 +6,7 @@ const API_URL = process.env.API_URL
 describe('API de cupons Loja EBAC', () => {
     let token = "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy"
 
-    it.only('Realizando um GET de cupons', async () => {
+    it.only('(CheckGET)Realizando um GET de cupons', async () => {
         return req(API_URL)
             .get('/coupons')
             .set('Accept', 'application/json')
@@ -19,7 +19,7 @@ describe('API de cupons Loja EBAC', () => {
             })
     });
 
-    it('Cadastrando CUPOM - POST', () => {
+    it('(CheckPOST)Cadastrando CUPOM - POST', () => {
         req('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
             .post('/coupons')
             .send({
