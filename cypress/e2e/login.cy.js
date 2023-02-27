@@ -19,32 +19,32 @@ context('Funcionalidade Login', () => {
 
   it('Login com sucesso', () => {
     cy.fixture('perfil').then((dados) => {
-    cy.login(dados.username, dados.password)
+      cy.login(dados.username, dados.password)
     })
     cy.get('.page-title').should('contain', 'Minha conta')
     cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', ' gabsqa-1779')
   });
 
-  it('Login sem preencher E-mail', () => {
+  it('Login inválido - sem preencher E-mail', () => {
     cy.get('#password').type('223233')
     cy.get('.woocommerce-form > .button').click()
-    cy.get('.woocommerce-error > li').should('contain', 'Erro: Nome de usuário é obrigatório.')  
+    cy.get('.woocommerce-error > li').should('contain', 'Erro: Nome de usuário é obrigatório.')
   });
 
-  it('Login com email inexistente', () => {
+  it('Login inválido - com email não cadastrado', () => {
     cy.fixture('perfil').then((dados) => {
-    cy.login(dados.username3)    
+      cy.login(dados.username3, dados.password)
     })
     cy.get('.page-title').should('contain', 'Minha conta')
-    cy.get('.woocommerce-error > li').should('contain', 'Erro: a senha fornecida para o e-mail gabsqa@testesebac.com.qa está incorreta. Perdeu a senha?')
+    cy.get('.woocommerce-error > li').should('contain', 'Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.')
   });
 
-  it('Login com email não preenchido', () => {
+  it('Login inválido - sem preencher senha', () => {
     cy.fixture('perfil').then((dados) => {
-    cy.login(dados.password3)    
+      cy.login(dados.username, ' ')
     })
     cy.get('.page-title').should('contain', 'Minha conta')
-    cy.get('.woocommerce-error > li').should('contain', 'Erro: a senha fornecida para o e-mail gabsqa@testesebac.com.qa está incorreta. Perdeu a senha?')
+    cy.get('.woocommerce-error > li').should('contain', 'Erro: o campo da senha está vazio.')
   });
 
 })
