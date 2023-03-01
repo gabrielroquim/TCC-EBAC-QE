@@ -7,6 +7,7 @@
     "test2": "echo \"Error: no test specified\" && exit 1",
     "cy:run": "npx cypress run",
     "test": "jest",
+    "test:consumer": "jest --runInBand api/contratos/contratos.spec.js",
     "test:CheckGET": "jest --testNamePattern=CheckGET",
     "test:CheckPOST": "jest --testNamePattern=CheckPOST"
   },

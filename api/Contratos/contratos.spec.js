@@ -2,6 +2,8 @@ import { Pact } from "@pact-foundation/pact"
 import { eachLike, somethingLike } from "@pact-foundation/pact/src/dsl/matchers"
 import 'dotenv/config'
 import { resolve } from 'path'
+import { couponsList } from "../request/coupons.request.js"
+
 const mockProvider = new Pact({
     consumer: 'coupons-admin',
     provider: 'coupons-client',
@@ -24,7 +26,10 @@ describe(' Consumer Test', () => {
                         "Content-Type": 'aplication/json'
                     },
                     body: {
-
+                        "context": "view",
+                        "per_page": 4,
+                        "order": "desc",
+                        "orderby": "date"
                     }
                 },
                 willRespondWith: {
@@ -40,47 +45,47 @@ describe(' Consumer Test', () => {
                                 "amount": somethingLike("20.00"),
                                 "date_created": somethingLike("2023-02-25T18:55:47"),
                                 "date_created_gmt": somethingLike("2023-02-25T21:55:47"),
-                                "date_modified":somethingLike("2023-02-25T18:55:47"),
+                                "date_modified": somethingLike("2023-02-25T18:55:47"),
                                 "date_modified_gmt": somethingLike("2023-02-25T21:55:47"),
                                 "discount_type": somethingLike("fixed_product"),
                                 "description": somethingLike("Cupom reservea"),
-                                "date_expires": somethingLike(null),
-                                "date_expires_gmt": somethingLike(null),
-                                "usage_count":  somethingLike(0),
-                                "individual_use": false,
-                                "product_ids": [],
-                                "excluded_product_ids": [],
-                                "usage_limit": null,
-                                "usage_limit_per_user": null,
-                                "limit_usage_to_x_items": null,
-                                "free_shipping": false,
-                                "product_categories": [],
-                                "excluded_product_categories": [],
-                                "exclude_sale_items": false,
-                                "minimum_amount": "0.00",
-                                "maximum_amount": "0.00",
-                                "email_restrictions": [],
-                                "used_by": [],
-                                "meta_data": [],
-                                "_links": {
-                                    "self": [
-                                        {
-                                            "href": "http:\/\/lojaebac.ebaconline.art.br\/wp-json\/wc\/v3\/coupons\/8829"
-                                        }
-                                    ],
-                                    "collection": [
-                                        {
-                                            "href": "http:\/\/lojaebac.ebaconline.art.br\/wp-json\/wc\/v3\/coupons"
-                                        }
-                                    ]
-                                }
-                            }),
+                                "date_expires": somethingLike("null"),
+                                "date_expires_gmt": somethingLike("null"),
+                                "usage_count": somethingLike(0),
+                                "individual_use": somethingLike("boolean"),
+                                "product_ids": somethingLike([]),
+                                "excluded_product_ids": somethingLike([]),
+                                "usage_limit": somethingLike("null"),
+                                "usage_limit_per_user": somethingLike("null"),
+                                "limit_usage_to_x_items": somethingLike("null"),
+                                "free_shipping": somethingLike("boolean"),
+                                "product_categories": somethingLike([]),
+                                "excluded_product_categories": somethingLike([]),
+                                "exclude_sale_items": somethingLike("boolean"),
+                                "minimum_amount": somethingLike("0.00"),
+                                "maximum_amount": somethingLike("0.00"),
+                                "email_restrictions": somethingLike([]),
+                                "used_by": somethingLike([]),
+                                "meta_data": somethingLike([]),
+                                "_links": somethingLike("null")
+
+                            })
                 }
             })
         })
     })
+    afterAll(() => mockProvider.finalize())
+   // afterEach(() => mockProvider.verify())
 
-    it('should coupons', () => {
+    it('should  return list coupons',  () => {
+      couponsList().then(response => {
+            const { code, description } = response.id[1]
+
+            expect(response.status).toEqual(200)
+            expect(code).toBe('vonz')
+            expect(description).toBe('Cupom reservea')
+        })
 
     });
+
 });
