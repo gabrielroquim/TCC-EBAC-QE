@@ -1,39 +1,15 @@
-const req = require('supertest');
-const authorization = require('../utils/token.json')
-const API_URL = process.env.API_URL
+import { Verifier } from '@pact-foundation/pact';
+import 'dotenv/config'
 
-
-describe('API de cupons Loja EBAC', () => {
-    let token = "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy"
-
-    it.only('(CheckGET)Realizando um GET de cupons', async () => {
-        return req(API_URL)
-            .get('/coupons')
-            .set('Accept', 'application/json')
-            .set("Authorization", JSON.stringify(token))
-            .then(response => {
-                expect(response.status).toBe(200)
-                expect(response.body).toBeDefined()
-                expect(response.body).toBeInstanceOf(Array)            
-                expect(response.body.code).toBe(undefined)              
-            })
+describe('Pact Verification', () => {
+    it('should validate the pact', () => {
+        const brokerOpts = {
+            provider: 'coupons-client',
+            providerBaseUrl: process.env.PROVIDER_URL,
+            pactUrls: ['http://localhost:9292/pacts/provider/ebac-demo-store-server/consumer/ebac-demo-store-admin/latest'],
+            publishVerificationResult: true,
+            providerVersion: '1.0.0'
+        }
+        return new Verifier(brokerOpts).verifyProvider()
     });
-
-    it('(CheckPOST)Cadastrando CUPOM - POST', () => {
-        req('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
-            .post('/coupons')
-            .send({
-                "code": "Sonic2022",
-                "amount": "10",
-                "discount_type": "fixed_product",
-                "description": "Cupom de desconto de teste",
-            })
-            .set('Accept', 'application/json')
-            .set("Authorization", JSON.stringify(authorization))
-            .then(response => {
-                //expect(response.body.data.status).toEqual(400)
-                expect(response.status).toEqual(400)
-                expect(response.body.message).toEqual('O código de cupom já existe')
-            })
-    });
-})
+});

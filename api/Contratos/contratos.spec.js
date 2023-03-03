@@ -75,7 +75,7 @@ describe(' Consumer Test', () => {
         })
     })
     afterAll(() => mockProvider.finalize())
-   afterEach(() => mockProvider.verify())
+   afterEach( async() => await mockProvider.verify())
 
     it('should  return list coupons',  () => {
       couponsList().then(response => {
