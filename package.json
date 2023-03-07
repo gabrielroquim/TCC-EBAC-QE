@@ -11,7 +11,7 @@
     "test:consumer": "jest --runInBand api/test/consumer.spec.js",
     "test:pact": "npm run test:consumer && npm run test:provider",
     "test:CheckGET": "jest --testNamePattern=CheckGET",
-    "test:CheckPOST": "jest --testNamePattern=CheckPOST"
+    "test:CheckPOSTNew": "jest --testNamePattern=CheckPOSTNew"
   },
   "jest": {
     "testTimeout": 20000,

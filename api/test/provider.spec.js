@@ -6,7 +6,7 @@ describe('Pact Verification', () => {
         const brokerOpts = {
             provider: 'coupons-client',
             providerBaseUrl: process.env.PROVIDER_URL,
-            pactUrls: ['http://localhost:9292/pacts/provider/ebac-demo-store-server/consumer/ebac-demo-store-admin/latest'],
+            pactUrls: ['http://lojaebac.ebaconline.art.br/wp-json/wc/v3'],
             publishVerificationResult: true,
             providerVersion: '1.0.0'
         }
