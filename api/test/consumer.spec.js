@@ -23,7 +23,7 @@ describe(' Consumer Test', () => {
                     path: '/coupons',
                     headers: {
                         Authorization: 'Bearer YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy',
-                        "Content-Type": 'aplication/json'
+                        "accept:-Type": 'application/json'
                     },
                     body: {
                         "context": "view",
@@ -35,7 +35,7 @@ describe(' Consumer Test', () => {
                 willRespondWith: {
                     status: 200,
                     headers: {
-                        "Content-Type": 'aplication/json; charset=UTF-8'
+                         "accept:-Type": 'application/json'
                     },
                     body:
                         eachLike(
@@ -75,10 +75,10 @@ describe(' Consumer Test', () => {
         })
     })
     afterAll(() => mockProvider.finalize())
-   afterEach( async() => await mockProvider.verify())
+   // afterEach( () =>  mockProvider.verify())
 
-    it('should  return list coupons',  () => {
-      couponsList().then(response => {
+    it('should  return list coupons', () => {
+        couponsList().then(response => {
             const { code, description } = response.id[1]
 
             expect(response.status).toEqual(200)

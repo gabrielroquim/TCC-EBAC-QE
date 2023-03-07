@@ -1,0 +1,22 @@
+{
+  "name": "k6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "k6build": "webpack",
+    "k6": "k6 run ./dist/login.test.js"
+  },
+  "author": "Helton Imroth",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "core-js": "^3.27.2",
+    "dotenv": "^16.0.3",
+    "k6": "^0.0.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
