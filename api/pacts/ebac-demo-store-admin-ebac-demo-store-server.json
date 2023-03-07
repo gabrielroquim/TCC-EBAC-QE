@@ -1,0 +1,101 @@
+{
+  "consumer": {
+    "name": "coupons-admin"
+  },
+  "provider": {
+    "name": "coupons-client"
+  },
+  "interactions": [
+    {
+      "description": "a request",
+      "request": {
+        "method": "POST",
+        "path": "/coupons",
+        "headers": {
+          "Authorization": "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "context": "view",
+          "per_page": 4,
+          "order": "desc",
+          "orderby": "date"
+      },
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "items": [
+              {
+                "createdAt": "2021-11-21T19:57:22.221Z",
+                "firstName": "Ernesto",
+                "id": "ckw9nw4h90000ouup31sak6l3",
+                "lastName": "Barbosa",
+                "roles": [
+                  "user"
+                ],
+                "updatedAt": "2021-11-23T01:09:22.828Z",
+                "username": "admin",
+                "__typename": "User"
+              },
+              {
+                "createdAt": "2021-11-21T19:57:22.221Z",
+                "firstName": "Ernesto",
+                "id": "ckw9nw4h90000ouup31sak6l3",
+                "lastName": "Barbosa",
+                "roles": [
+                  "user"
+                ],
+                "updatedAt": "2021-11-23T01:09:22.828Z",
+                "username": "admin",
+                "__typename": "User"
+              }
+            ],
+            "total": {
+              "count": "2",
+              "__typename": "MetaQueryPayload"
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.items": {
+            "min": 2
+          },
+          "$.body.data.items[*].*": {
+            "match": "type"
+          },
+          "$.body.data.items[*].createdAt": {
+            "match": "type"
+          },
+          "$.body.data.items[*].firstName": {
+            "match": "type"
+          },
+          "$.body.data.items[*].id": {
+            "match": "type"
+          },
+          "$.body.data.items[*].lastName": {
+            "match": "type"
+          },
+          "$.body.data.items[*].updatedAt": {
+            "match": "type"
+          },
+          "$.body.data.items[*].username": {
+            "match": "type"
+          },
+          "$.body.data.items[*].__typename": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

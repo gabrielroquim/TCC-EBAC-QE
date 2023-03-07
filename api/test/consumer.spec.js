@@ -1,68 +1,89 @@
-const req = require('supertest');
-const authorization = require('../utils/token.json')
-const API_URL = process.env.API_URL
-const faker = require('faker-br');
-//const faker = require('faker');
+import { Pact } from "@pact-foundation/pact"
+import { eachLike, somethingLike } from "@pact-foundation/pact/src/dsl/matchers"
+import 'dotenv/config'
+import { resolve } from 'path'
+import { couponsList } from "../request/coupons.request.js"
 
-
-const amount = faker.random.number({min: 1, max: 15});
-const code = "Ganhe" + amount;
-const description = "Cupom " + faker.commerce.color();
-
-
-
-describe('API de cupons Loja EBAC', () => {
-
-
-    let token = "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy"
-
-    it('(CheckGET)Realizando um GET de cupons', async () => {
-        await req('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
-            .get('/coupons')
-            .set('Accept', 'application/json')
-            .set("Authorization", JSON.stringify(token))
-            .then(response => {
-                expect(response.status).toBe(200)
-                expect(response.body).toBeDefined()
-                expect(response.body).toBeInstanceOf(Array)
-                expect(response.body.code).toBe(undefined)
-            })
-    });
-
-    it('(CheckPOSTNew)Cadastrando CUPOM - POST', () => {
-        req('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
-            .post('/coupons')
-            .send({
-                "code": code,
-                "amount": amount,
-                "discount_type": "fixed_product",
-                "description": description,
-            })
-            .set('Accept', 'application/json')
-            .set("Authorization", JSON.stringify(token))
-            .then(response => {
-                //expect(response.body.data.status).toEqual(400)
-                expect(response.status).toEqual(201)
-
-            })
-    });
-
-    it('(CheckPOST)Cadastrando CUPOM - POST', () => {
-        req('http://lojaebac.ebaconline.art.br/wp-json/wc/v3')
-            .post('/coupons')
-            .send({
-                "code": "PalmeirasVerdesd",
-                "amount": "10",
-                "discount_type": "fixed_product",
-                "description": "Cupom de desconto de teste",
-            })
-            .set('Accept', 'application/json')
-            .set("Authorization", JSON.stringify(token))
-            .then(response => {
-                //expect(response.body.data.status).toEqual(400)
-                expect(response.status).toEqual(201)
-                expect(response.body.message).toEqual('O código de cupom já existe')
-            })
-    });
+const mockProvider = new Pact({
+    consumer: 'coupons-admin',
+    provider: 'coupons-client',
+    port: process.env.MOCK_URL,
+    log: resolve(process.cwd(), 'logs', 'pact.log'),
+    dir: resolve(process.cwd(), 'pacts')
 
 })
+
+describe(' Consumer Test', () => {
+    beforeAll(async () => {
+        await mockProvider.setup().then(() => {
+            mockProvider.addInteraction({
+                uponReceiving: 'a request',
+                withRequest: {
+                    method: 'GET',
+                    path: '/coupons',
+                    headers: {
+                        Authorization: 'Bearer YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy',
+                        "Content-Type": 'aplication/json'
+                    },
+                    body: {
+                        "context": "view",
+                        "per_page": 4,
+                        "order": "desc",
+                        "orderby": "date"
+                    }
+                },
+                willRespondWith: {
+                    status: 200,
+                    headers: {
+                        "Content-Type": 'aplication/json; charset=UTF-8'
+                    },
+                    body:
+                        eachLike(
+                            {
+                                "id": somethingLike(8829),
+                                "code": somethingLike("vonz"),
+                                "amount": somethingLike("20.00"),
+                                "date_created": somethingLike("2023-02-25T18:55:47"),
+                                "date_created_gmt": somethingLike("2023-02-25T21:55:47"),
+                                "date_modified": somethingLike("2023-02-25T18:55:47"),
+                                "date_modified_gmt": somethingLike("2023-02-25T21:55:47"),
+                                "discount_type": somethingLike("fixed_product"),
+                                "description": somethingLike("Cupom reservea"),
+                                "date_expires": somethingLike("null"),
+                                "date_expires_gmt": somethingLike("null"),
+                                "usage_count": somethingLike(0),
+                                "individual_use": somethingLike("boolean"),
+                                "product_ids": somethingLike([]),
+                                "excluded_product_ids": somethingLike([]),
+                                "usage_limit": somethingLike("null"),
+                                "usage_limit_per_user": somethingLike("null"),
+                                "limit_usage_to_x_items": somethingLike("null"),
+                                "free_shipping": somethingLike("boolean"),
+                                "product_categories": somethingLike([]),
+                                "excluded_product_categories": somethingLike([]),
+                                "exclude_sale_items": somethingLike("boolean"),
+                                "minimum_amount": somethingLike("0.00"),
+                                "maximum_amount": somethingLike("0.00"),
+                                "email_restrictions": somethingLike([]),
+                                "used_by": somethingLike([]),
+                                "meta_data": somethingLike([]),
+                                "_links": somethingLike("null")
+
+                            })
+                }
+            })
+        })
+    })
+    afterAll(() => mockProvider.finalize())
+   afterEach( async() => await mockProvider.verify())
+
+    it('should  return list coupons',  () => {
+      couponsList().then(response => {
+            const { code, description } = response.id[1]
+
+            expect(response.status).toEqual(200)
+            expect(code).toBe('vonz')
+            expect(description).toBe('Cupom reservea')
+        })
+    });
+});
