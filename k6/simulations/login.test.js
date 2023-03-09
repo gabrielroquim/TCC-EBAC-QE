@@ -1,5 +1,5 @@
 import { group } from 'k6';
-import Login from '../requests/login.request'
+import Login from '../requests/Get-Customer'
 import data from '../data/usuarios.json'
 
 
