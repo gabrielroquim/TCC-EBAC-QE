@@ -9,7 +9,7 @@ export const couponsList = async () => {
     return await axios.get(`${baseURL}/coupons`, data, {
         headers: {
             Authorization: 'Bearer YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy',
-            "Content-Type": 'aplication/json'
+            "Content-Type": 'application/json'
         },
     })
 }
