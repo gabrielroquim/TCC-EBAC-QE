@@ -5,8 +5,9 @@ import { group, sleep } from "k6";
 export default function() {
     group('GETCUSTOMER - Controller Customer',() =>{
         GetCustomer();
+        sleep(1);
     });
 
-    sleep(1);
+  
 
 }

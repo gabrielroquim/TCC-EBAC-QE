@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "k6build": "webpack",
-    "k6": "k6 run tcc-ebac-qe/k6/simulations/login.test.js"
+    "k6": "k6 run /simulations/login.test.js" 
   },
   "author": "Gabriel Roquim",
   "license": "ISC",
