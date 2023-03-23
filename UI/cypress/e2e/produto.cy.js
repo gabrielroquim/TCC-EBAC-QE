@@ -1,4 +1,4 @@
-
+/// <reference types="cypress" />
 let dadosLogin
 
 context('Funcionalidade Login', () => {
@@ -21,29 +21,25 @@ context('Funcionalidade Login', () => {
       cy.login(dados.username, dados.password)
     })
     cy.get('.page-title').should('contain', 'Minha conta')
-    cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', ' gabsqa-1779')
+    cy.get('#primary-menu > .menu-item-629 > a').click()
+   //cy.addProdutos('Abominable Hoodie', '36', 'Blue', 1)
+    cy.addProdutos('Abominable Hoodie', 'L', 'Blue', 2)
+    cy.addProdutos('Abominable Hoodie', 'XS', 'Blue', 2)   
+    cy.addProdutos('Abominable Hoodie', 'M', 'Green', 2)
+    cy.get('.dropdown-toggle > .text-skin > .icon-basket').click()
+    cy.get('[class="button checkout wc-forward"]').eq(1).click()
+    
+
+    cy.get('#payment_method_cheque').click()
+    cy.get('.showcoupon').click()
+    cy.get('#coupon_code').type("PalmeirasVerdesd")
+    cy.get('.form-row-last > .button').click()
+    cy.get('#terms').click({ force: true })
+    cy.get('#place_order').click({ force: true })
+    cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+    cy.get('.woocommerce-order-details__title').should('contain', 'Detalhes do pedido')
+
   });
 
-  it('Login inválido - sem preencher E-mail', () => {
-    cy.get('#password').type('223233')
-    cy.get('.woocommerce-form > .button').click()
-    cy.get('.woocommerce-error > li').should('contain', 'Erro: Nome de usuário é obrigatório.')
-  });
-
-  it('Login inválido - com email não cadastrado', () => {
-    cy.fixture('perfil').then((dados) => {
-      cy.login(dados.username3, dados.password)
-    })
-    cy.get('.page-title').should('contain', 'Minha conta')
-    cy.get('.woocommerce-error > li').should('contain', 'Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.')
-  });
-
-  it('Login inválido - sem preencher senha', () => {
-    cy.fixture('perfil').then((dados) => {
-      cy.login(dados.username, ' ')
-    })
-    cy.get('.page-title').should('contain', 'Minha conta')
-    cy.get('.woocommerce-error > li').should('contain', 'Erro: o campo da senha está vazio.')
-  });
 
 })

@@ -45,3 +45,21 @@ Cypress.Commands.add('token', (email, senha) => {
         return response.body.authorization
     })
 })
+
+
+Cypress.Commands.add('addProdutos', (produto, tamanho, cor, quantidade,) => {
+
+    cy.get('[class="product-block grid"]').contains(produto).click({ force: true })
+    cy.get('.button-variable-item-' + tamanho).click({ force: true })
+    cy.get('.button-variable-item-' + cor).click()
+    cy.get('.button-variable-item-' + tamanho).click({ force: true })
+    cy.get('.input-text').clear().type(quantidade)
+    cy.get('.single_add_to_cart_button').click()
+    //cy.get('.woocommerce-message', { timeout: 10000 }).contains(new RegExp(`${quantidade} x "${produto}" foram adicionados no seu carrinho.`))
+
+    cy.get('.woocommerce-message').should('contain',/**/"foram adicionados no seu carrinho")
+    cy.get('#primary-menu > .menu-item-629 > a').click({ force: true })
+
+
+
+});
