@@ -18,3 +18,5 @@ import '../support/commands'
 import 'cypress-wait-until';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+import '@shelex/cypress-allure-plugin';

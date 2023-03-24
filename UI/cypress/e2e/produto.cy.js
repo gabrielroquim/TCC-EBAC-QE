@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
+require('@shelex/cypress-allure-plugin');
 let dadosLogin
 
-context('Funcionalidade Login', () => {
+context('Comprar Produtos', () => {
   before(() => {
     cy.fixture('perfil').then(perfil => {
       dadosLogin = perfil
@@ -34,12 +35,13 @@ context('Funcionalidade Login', () => {
     cy.get('.showcoupon').click()
     cy.get('#coupon_code').type("PalmeirasVerdesd")
     cy.get('.form-row-last > .button').click()
+    cy.get('woocommerce-message').should('contain','Código de cupom aplicado com sucesso.')
+    cy.get('#order_comments').type('Preciso receber embrulhado para presente')
     cy.get('#terms').click({ force: true })
     cy.get('#place_order').click({ force: true })
     cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
     cy.get('.woocommerce-order-details__title').should('contain', 'Detalhes do pedido')
 
   });
-
 
 })

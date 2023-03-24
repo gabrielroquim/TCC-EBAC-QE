@@ -8,18 +8,21 @@
     "cy:report": "npx mochawesome-merge ./mochawesome-report/mochawesome*.json  > mochawesome-report/report.json && npx marge mochawesome-report/report.json",
     "test:allure": "npx cypress run --env allure=true",
     "allure:open": "npx allure serve",
-    "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8"
+    "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8",
+    "cy:run": "cypress run",
+    "allureGenerate": "allure generate allure-results --clean && allure open"
   },
   "author": "GAbriel Roquim",
   "license": "ISC",
   "dependencies": {
-    "@shelex/cypress-allure-plugin": "^2.37.0",
     "allure": "^0.0.0",
+    "faker-br": "^0.4.1",
     "mocha-allure-reporter": "^1.4.0",
     "mochawesome": "^7.1.3",
     "mochawesome-report-generator": "^6.2.0"
   },
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.37.0",
     "cypress-wait-until": "^1.7.2"
   }
 }

@@ -8,8 +8,14 @@ module.exports = defineConfig({
     baseUrl: "http://lojaebac.ebaconline.art.br",
     setupNodeEvents(on, config) {
       allureWriter(on, config);
+   
       return config;
+      
     }
+
+ 
+    
+
   },
   
 
