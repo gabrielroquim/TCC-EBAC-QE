@@ -17,7 +17,6 @@ class MyStoreScreen {
         return await this.#myStoreLogo.isDisplayed()
     }
 
-
 }
 
 module.exports = new MyStoreScreen()
