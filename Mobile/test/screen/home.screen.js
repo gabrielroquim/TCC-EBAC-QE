@@ -6,8 +6,6 @@ class HomeScreen {
     async goToLogin() {
         await this.#enterStoreAddress.click()
     }
-
-
 }
 
 module.exports = new HomeScreen()

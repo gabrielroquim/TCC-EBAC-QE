@@ -16,7 +16,6 @@ class MyStoreScreen {
         await this.#myStoreLogo.waitForExist({ timeout: 20000 })
         return await this.#myStoreLogo.isDisplayed()
     }
-
 }
 
 module.exports = new MyStoreScreen()
