@@ -9,6 +9,7 @@
     "author": "Gabriel Roquim",
     "license": "ISC",
     "devDependencies": {
+        "@wdio/allure-reporter": "^8.6.8",
         "@wdio/appium-service": "^8.6.3",
         "@wdio/cli": "^8.6.5",
         "@wdio/local-runner": "^8.6.3",
@@ -17,6 +18,7 @@
         "appium": "^1.22.3"
     },
     "dependencies": {
+        "allure-commandline": "^2.21.0",
         "faker-br": "^0.4.1"
     }
 }
