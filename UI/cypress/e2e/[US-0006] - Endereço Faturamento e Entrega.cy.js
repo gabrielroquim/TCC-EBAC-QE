@@ -36,7 +36,7 @@ describe('Cadastrar Endereços de Faturamento e Entrega', () => {
         cy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso');
     });
 
-    it('Deve cadastrar Endereço de Entrega', () => {
+    it('Deve cadastrar Endereço  de Entrega', () => {
         cy.get(':nth-child(3) > [href="http://lojaebac.ebaconline.art.br/minha-conta/edit-address/"]').click();
         cy.get('h2').should('contain', 'My Addresses');
         cy.get(':nth-child(2) > .title > h3').should('contain', 'Shipping Address'); 
