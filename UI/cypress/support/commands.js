@@ -48,7 +48,6 @@ Cypress.Commands.add('token', (email, senha) => {
 
 
 Cypress.Commands.add('addProdutos', (produto, tamanho, cor, quantidade,) => {
-
     cy.get('[class="product-block grid"]').contains(produto).click({ force: true })
     cy.get('.button-variable-item-' + tamanho).click({ force: true })
     cy.get('.button-variable-item-' + cor).click()
@@ -72,4 +71,20 @@ Cypress.Commands.add('preCadastro', (email, senha, nome, sobrenome) => {
     cy.get('#account_last_name').type(sobrenome)
     cy.get('.woocommerce-Button').click()
 
+})
+
+
+Cypress.Commands.add('cadastrarCupon', (token, produto, preco, descricao, quantidade) => {
+    cy.request({
+        method: 'POST',
+        url: 'produtos',
+        headers: { authorization: token },
+        body: {
+            "nome": produto,
+            "preco": preco,
+            "descricao": descricao,
+            "quantidade": quantidade
+        },
+        failOnStatusCode: false
+    })
 })

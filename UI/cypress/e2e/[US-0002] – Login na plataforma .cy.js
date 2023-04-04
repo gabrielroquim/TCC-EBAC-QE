@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 require('@shelex/cypress-allure-plugin');
 
 let dadosLogin

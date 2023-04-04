@@ -9,14 +9,13 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       allureWriter(on, config);
    
-      return config;
-      
-    }
+      return config;      
+    }    
 
- 
-    
+  },  
+  integration: {
+    specPattern: 'cypress/api/integration/contrato_cupons.cy.js'
 
-  },
-  
+  }
 
 });

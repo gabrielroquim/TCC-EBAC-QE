@@ -10,13 +10,16 @@
     "allure:open": "npx allure serve",
     "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8",
     "cy:run": "cypress run",
-    "allureGenerate": "allure generate allure-results --clean && allure open"
+    "allureGenerate": "allure generate allure-results --clean && allure open",
+    "apiCypress": "npx cypress run ./integration/contrato_cupons.cy.js"
   },
   "author": "GAbriel Roquim",
   "license": "ISC",
   "dependencies": {
     "allure": "^0.0.0",
+    "cypress": "^12.8.1",
     "faker-br": "^0.4.1",
+    "joi": "^17.9.1",
     "mocha-allure-reporter": "^1.4.0",
     "mochawesome": "^7.1.3",
     "mochawesome-report-generator": "^6.2.0"
