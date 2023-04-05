@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-04-05T22:27:25.953Z",
+    "end": "2023-04-05T22:27:54.937Z",
+    "duration": 28984,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "afaa71f6-0519-4110-80f4-3f96ef575837",
+      "title": "",
+      "fullFile": "cypress\\e2e\\[US-0006] - Endereço Faturamento e Entrega.cy.js",
+      "file": "cypress\\e2e\\[US-0006] - Endereço Faturamento e Entrega.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "35d37c4c-44dc-488d-8089-f2bd05d623a1",
+          "title": "Cadastrar Endereços de Faturamento e Entrega",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar Endereço de Faturamento",
+              "fullTitle": "Cadastrar Endereços de Faturamento e Entrega Deve cadastrar Endereço de Faturamento",
+              "timedOut": null,
+              "duration": 15071,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(':nth-child(3) > [href=\"http://lojaebac.ebaconline.art.br/minha-conta/edit-address/\"]').click();\ncy.get('h2').should('contain', 'My Addresses');\ncy.get('.myaccount_address').should('contain', 'The following addresses will be used on the checkout page by default.');\ncy.get(':nth-child(1) > .title > h3').should('contain', 'Billing Address');\ncy.get(':nth-child(1) > .title > .edit').should('exist').click();\ncy.get('#billing_first_name').clear().type(faker.name.firstName());\ncy.get('#billing_last_name').clear().type(faker.name.lastName());\ncy.get('#billing_company').clear().type(faker.company.companyName());\ncy.get('#billing_address_1').clear().type(faker.address.streetName());\ncy.get('#billing_address_2').clear().type(faker.random.number());\ncy.get('#billing_city').clear().type(faker.address.city());\ncy.get('#billing_postcode').clear().type(faker.address.zipCodeValid());\ncy.get('#billing_phone').clear().type(faker.phone.phoneNumber());\ncy.get('button[name=\"save_address\"]').should('have.attr', 'value', 'Salvar endereços').click();\ncy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso');",
+              "err": {},
+              "uuid": "0368dd8b-7cdc-4e3f-b70e-f74e4ab0e947",
+              "parentUUID": "35d37c4c-44dc-488d-8089-f2bd05d623a1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve cadastrar Endereço  de Entrega",
+              "fullTitle": "Cadastrar Endereços de Faturamento e Entrega Deve cadastrar Endereço  de Entrega",
+              "timedOut": null,
+              "duration": 12326,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(':nth-child(3) > [href=\"http://lojaebac.ebaconline.art.br/minha-conta/edit-address/\"]').click();\ncy.get('h2').should('contain', 'My Addresses');\ncy.get(':nth-child(2) > .title > h3').should('contain', 'Shipping Address');\ncy.get(':nth-child(2) > .title > .edit').should('exist').click();\ncy.get('#shipping_first_name').clear().type(faker.name.firstName());\ncy.get('#shipping_last_name').clear().type(faker.name.lastName());\ncy.get('#shipping_company').clear().type(faker.company.companyName());\ncy.get('#shipping_country_field > .woocommerce-input-wrapper > .select2 > .selection > .select2-selection > .select2-selection__arrow > b').click();\ncy.get('.select2-results__option').contains('Brasil').click();\ncy.get('#shipping_city').type(faker.address.city());\ncy.get('#shipping_state_field > .woocommerce-input-wrapper > .select2 > .selection > .select2-selection > .select2-selection__arrow').click();\ncy.get('.select2-search__field').type('São Paulo');\ncy.get('.select2-results__option').contains('São Paulo').click();\ncy.get('#shipping_address_1').clear().type(faker.address.streetName());\ncy.get('#shipping_address_2').clear().type(faker.random.number());\ncy.get('#shipping_postcode').clear().type(faker.address.zipCodeValid());\ncy.get('button[name=\"save_address\"]').should('have.attr', 'value', 'Salvar endereços').click();\ncy.get('.woocommerce-message').should('contain', 'Endereço alterado com sucesso');",
+              "err": {},
+              "uuid": "32cfd0d5-8c17-474a-a43a-b502395b8055",
+              "parentUUID": "35d37c4c-44dc-488d-8089-f2bd05d623a1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0368dd8b-7cdc-4e3f-b70e-f74e4ab0e947",
+            "32cfd0d5-8c17-474a-a43a-b502395b8055"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 27397,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

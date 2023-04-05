@@ -16,6 +16,19 @@ module.exports = defineConfig({
   integration: {
     specPattern: 'cypress/api/integration/contrato_cupons.cy.js'
 
-  }
+  },
+  reporter: 'cypress-multi-reporters',
+  reporterOptions: {
+    configFile: 'reporter-config.json',
+  },
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/results',
+    overwrite: false,
+    html: true,
+    json: true,
+  },
+
+  
 
 });
