@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-04-05T22:27:06.635Z",
+    "end": "2023-04-05T22:27:16.346Z",
+    "duration": 9711,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4403b052-c60a-4cfb-bc10-ab43ca7d755c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\[US-0005] - Pre-cadastro.cy.js",
+      "file": "cypress\\e2e\\[US-0005] - Pre-cadastro.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b893bd51-c84a-4925-9aa4-a17e13e1832e",
+          "title": "Funcionalidade Pré- Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve completar o pré-cadastro com sucesso com comandos customizados",
+              "fullTitle": "Funcionalidade Pré- Cadastro Deve completar o pré-cadastro com sucesso com comandos customizados",
+              "timedOut": null,
+              "duration": 9622,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let emailFaker3 = faker.internet.email();\ncy.preCadastro(emailFaker3, faker.internet.password(), faker.name.firstName(), faker.name.lastName());\ncy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.');",
+              "err": {},
+              "uuid": "792b221f-bdf8-4329-a8d5-0120dca19b5b",
+              "parentUUID": "b893bd51-c84a-4925-9aa4-a17e13e1832e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "792b221f-bdf8-4329-a8d5-0120dca19b5b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9622,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

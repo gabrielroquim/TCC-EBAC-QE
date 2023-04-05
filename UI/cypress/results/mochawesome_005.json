@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-04-05T22:30:36.715Z",
+    "end": "2023-04-05T22:30:58.698Z",
+    "duration": 21983,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f491fa49-fc45-4bfa-ad9a-23b20ab2b44c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\[US-0002] – Login na plataforma .cy.js",
+      "file": "cypress\\e2e\\[US-0002] – Login na plataforma .cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8b98c976-6d0b-4f59-8ef7-7751ce5bea87",
+          "title": "Funcionalidade Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login com sucesso",
+              "fullTitle": "Funcionalidade Login Login com sucesso",
+              "timedOut": null,
+              "duration": 7222,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('perfil').then(dados => {\n  cy.login(dados.username, dados.password);\n});\ncy.get('.page-title').should('contain', 'Minha conta');\ncy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', ' gabsqa-1779');",
+              "err": {},
+              "uuid": "ce607ea2-c65a-4f86-aa6b-a537e55feac1",
+              "parentUUID": "8b98c976-6d0b-4f59-8ef7-7751ce5bea87",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login inválido - sem preencher E-mail",
+              "fullTitle": "Funcionalidade Login Login inválido - sem preencher E-mail",
+              "timedOut": null,
+              "duration": 2575,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#password').type('223233');\ncy.get('.woocommerce-form > .button').click();\ncy.get('.woocommerce-error > li').should('contain', 'Erro: Nome de usuário é obrigatório.');",
+              "err": {},
+              "uuid": "e8c08162-9c9d-4d49-88a4-cdc53481400f",
+              "parentUUID": "8b98c976-6d0b-4f59-8ef7-7751ce5bea87",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login inválido - com email não cadastrado",
+              "fullTitle": "Funcionalidade Login Login inválido - com email não cadastrado",
+              "timedOut": null,
+              "duration": 3325,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('perfil').then(dados => {\n  cy.login(dados.username3, dados.password);\n});\ncy.get('.page-title').should('contain', 'Minha conta');\ncy.get('.woocommerce-error > li').should('contain', 'Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.');",
+              "err": {},
+              "uuid": "d7897a21-4bc3-4659-8b36-caa379b22445",
+              "parentUUID": "8b98c976-6d0b-4f59-8ef7-7751ce5bea87",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login inválido - sem preencher senha",
+              "fullTitle": "Funcionalidade Login Login inválido - sem preencher senha",
+              "timedOut": null,
+              "duration": 3215,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('perfil').then(dados => {\n  cy.login(dados.username, ' ');\n});\ncy.get('.page-title').should('contain', 'Minha conta');\ncy.get('.woocommerce-error > li').should('contain', 'Erro: o campo da senha está vazio.');",
+              "err": {},
+              "uuid": "949fba7b-cae7-4244-9ed3-90162c1c5607",
+              "parentUUID": "8b98c976-6d0b-4f59-8ef7-7751ce5bea87",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ce607ea2-c65a-4f86-aa6b-a537e55feac1",
+            "e8c08162-9c9d-4d49-88a4-cdc53481400f",
+            "d7897a21-4bc3-4659-8b36-caa379b22445",
+            "949fba7b-cae7-4244-9ed3-90162c1c5607"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16337,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

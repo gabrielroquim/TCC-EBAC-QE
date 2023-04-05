@@ -1,0 +1,151 @@
+{
+  "consumer": {
+    "name": "coupons-admin"
+  },
+  "provider": {
+    "name": "coupons-client"
+  },
+  "interactions": [
+    {
+      "description": "a request",
+      "request": {
+        "method": "POST",
+        "path": "/coupons",
+        "headers": {
+          "Authorization": "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "context": "view",
+          "per_page": 2,
+          "order": "desc",
+          "orderby": "date"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": [
+          {
+            "id": 8910,
+            "code": "ganha 12",
+            "amount": "10.00",
+            "date_created": "2023-03-06T21:14:20",
+            "date_created_gmt": "2023-03-07T00:14:20",
+            "date_modified": "2023-03-06T21:14:20",
+            "date_modified_gmt": "2023-03-07T00:14:20",
+            "discount_type": "fixed_product",
+            "description": "CUPOM FESTA",
+            "date_expires": null,
+            "date_expires_gmt": null,
+            "usage_count": 0,
+            "individual_use": false,
+            "product_ids": [],
+            "excluded_product_ids": [],
+            "usage_limit": null,
+            "usage_limit_per_user": null,
+            "limit_usage_to_x_items": null,
+            "free_shipping": false,
+            "product_categories": [],
+            "excluded_product_categories": [],
+            "exclude_sale_items": false,
+            "minimum_amount": "0.00",
+            "maximum_amount": "0.00",
+            "email_restrictions": [],
+            "used_by": [],
+            "meta_data": [],
+            "_links": {
+              "self": [
+                {
+                  "href": "http:\/\/lojaebac.ebaconline.art.br\/wp-json\/wc\/v3\/coupons\/8910"
+                }
+              ],
+              "collection": [
+                {
+                  "href": "http:\/\/lojaebac.ebaconline.art.br\/wp-json\/wc\/v3\/coupons"
+                }
+              ]
+            }
+          },
+          {
+            "id": 8856,
+            "code": "palmeirasverdesd",
+            "amount": "10.00",
+            "date_created": "2023-03-02T21:06:31",
+            "date_created_gmt": "2023-03-03T00:06:31",
+            "date_modified": "2023-03-02T21:06:31",
+            "date_modified_gmt": "2023-03-03T00:06:31",
+            "discount_type": "fixed_product",
+            "description": "Cupom de desconto de teste",
+            "date_expires": null,
+            "date_expires_gmt": null,
+            "usage_count": 0,
+            "individual_use": false,
+            "product_ids": [],
+            "excluded_product_ids": [],
+            "usage_limit": null,
+            "usage_limit_per_user": null,
+            "limit_usage_to_x_items": null,
+            "free_shipping": false,
+            "product_categories": [],
+            "excluded_product_categories": [],
+            "exclude_sale_items": false,
+            "minimum_amount": "0.00",
+            "maximum_amount": "0.00",
+            "email_restrictions": [],
+            "used_by": [],
+            "meta_data": [],
+            "_links": {
+              "self": [
+                {
+                  "href": "http:\/\/lojaebac.ebaconline.art.br\/wp-json\/wc\/v3\/coupons\/8856"
+                }
+              ],
+              "collection": [
+                {
+                  "href": "http:\/\/lojaebac.ebaconline.art.br\/wp-json\/wc\/v3\/coupons"
+                }
+              ]
+            }
+          }
+        ],
+        "matchingRules": {
+          "$.body.data.items": {
+            "min": 2
+          },
+          "$.body.data.items[*].*": {
+            "match": "type"
+          },
+          "$.body.data.items[*].createdAt": {
+            "match": "type"
+          },
+          "$.body.data.items[*].firstName": {
+            "match": "type"
+          },
+          "$.body.data.items[*].id": {
+            "match": "type"
+          },
+          "$.body.data.items[*].lastName": {
+            "match": "type"
+          },
+          "$.body.data.items[*].updatedAt": {
+            "match": "type"
+          },
+          "$.body.data.items[*].username": {
+            "match": "type"
+          },
+          "$.body.data.items[*].__typename": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
