@@ -13,7 +13,7 @@
     "allureGenerate": "allure generate allure-results --clean && allure open",
     "apiCypress": "npx cypress run ./integration/contrato_cupons.cy.js"
   },
-  "author": "GAbriel Roquim",
+  "author": "Gabriel Roquim",
   "license": "ISC",
   "dependencies": {
     "allure": "^0.0.0",
