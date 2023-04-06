@@ -14,15 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node: [14, 16, 18, 19]
+    name: E2E on Node v${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: ${{ matrix.node }}
+      - run: node -v
       - name: Install dependencies
         run: npm install
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         continue-on-error: true
         with:
           command-prefix: npm run
@@ -31,5 +36,9 @@ jobs:
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v3
         with:
+          record: true
+          tag: node-${{ matrix.node }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./mochawesome-report
+
+
