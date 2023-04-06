@@ -26,7 +26,7 @@ jobs:
         with:
           install-command: npm install
           browser: chrome
-          star: npm start          
+          start: npm start          
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v3
         with:
