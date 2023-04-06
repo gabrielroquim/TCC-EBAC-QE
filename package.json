@@ -4,22 +4,19 @@
   "description": "Projeto Final EBAC",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cy:open": "npx cypress open",
-    "cy:report": "npx mochawesome-merge ./mochawesome-report/mochawesome*.json  > mochawesome-report/report.json && npx marge mochawesome-report/report.json",
-    "test:allure": "npx cypress run --env allure=true",
-    "allure:open": "npx allure serve",
-    "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8"
-=======
     "test2": "echo \"Error: no test specified\" && exit 1",
     "cy:run": "npx cypress run",
     "test": "jest",
+    "cy:open": "npx cypress open",
     "test:provider": "jest --runInBand api/test/provider.spec.js",
     "test:consumer": "jest --runInBand api/test/consumer.spec.js",
     "test:pact": "npm run test:consumer && npm run test:provider",
     "test:CheckGET": "jest --testNamePattern=CheckGET",
-    "test:CheckPOSTNew": "jest --testNamePattern=CheckPOSTNew"
+    "test:CheckPOSTNew": "jest --testNamePattern=CheckPOSTNew",
+    "cy:report": "npx mochawesome-merge ./mochawesome-report/mochawesome*.json  > mochawesome-report/report.json && npx marge mochawesome-report/report.json",
+    "test:allure": "npx cypress run --env allure=true",
+    "allure:open": "npx allure serve",
+    "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8"
   },
   "jest": {
     "testTimeout": 20000,
