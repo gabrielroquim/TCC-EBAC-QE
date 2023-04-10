@@ -1,5 +1,3 @@
-name: EBAC CI
-
 on:
   push:
     branches: [ projeto ]
@@ -26,8 +24,9 @@ jobs:
         continue-on-error: true
         with:
           command-prefix: npm run
-          start: npm start
           browser: chrome
+      - name: Open Cypress
+        run: npm run openCypress
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v3
         with:
