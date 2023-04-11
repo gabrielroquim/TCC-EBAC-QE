@@ -6,6 +6,7 @@
   "scripts": {
     "test2": "echo \"Error: no test specified\" && exit 1",
     "cyCypress": "npx cypress run",
+    "cypress": "npx cypress run",
     "test": "jest",
     "openCypress": "npx cypress open",
     "test:provider": "jest --runInBand api/test/provider.spec.js",
