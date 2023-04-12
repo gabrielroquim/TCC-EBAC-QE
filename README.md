@@ -1,5 +1,6 @@
 #  TCC - EBAC
-
+## Estratégia de Teste
+![Mapa de teste](S:\OneDrive\EBAC\Modulo34-ProjetoFinal\mapa.png)
 
 
 ## __Cenários de testes Automatizados__
