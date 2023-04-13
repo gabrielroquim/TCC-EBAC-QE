@@ -3,8 +3,10 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   e2e: { 
-    specPattern: 'cypress/**/*.cy.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/api/integration/*.cy.js',
+    specPattern: 'ui/cypress/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: "http://lojaebac.ebaconline.art.br",
+    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
       allureWriter(on, config);
    
