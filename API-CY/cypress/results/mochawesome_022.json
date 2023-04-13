@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-04-13T00:47:38.037Z",
+    "end": "2023-04-13T00:47:38.982Z",
+    "duration": 945,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4db165e3-f191-4350-87b5-7dc04dc4dc7c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API_cupons.cy.js",
+      "file": "cypress\\e2e\\API_cupons.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d4e4490e-a41a-4e84-a606-5883a6d1f0f6",
+          "title": "Teste de API para criação de cupom",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cupom já existe",
+              "fullTitle": "Teste de API para criação de cupom Cupom já existe",
+              "timedOut": null,
+              "duration": 907,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons',\n  headers: {\n    \"Connection\": \"keep-alive\",\n    \"Authorization\": \"Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy\",\n    \"Content-Type\": \"application/json\"\n  },\n  body: {\n    \"code\": \"PalmeirasVerdesd\",\n    \"amount\": \"10\",\n    \"discount_type\": \"fixed_product\",\n    \"description\": \"Cupom de desconto de teste\"\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(400);\n  expect(response.body.code).to.eq(\"woocommerce_rest_coupon_code_already_exists\");\n  expect(response.body.message).to.eq(\"O código de cupom já existe\");\n});\nit('Cadastra cupom', () => {\n  cy.request({\n    method: 'POST',\n    url: 'http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons',\n    headers: {\n      'Authorization': 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy',\n      'Content-Type': 'application/json'\n    },\n    body: {\n      'code': 'Ganhe15',\n      'amount': '10.00',\n      'discount_type': 'fixed_product',\n      'description': 'Cupom de testes 21'\n    }\n  }).then(response => {\n    if (response.status === 200) {} else if (response.status === 400) {\n      const errorMessage = response.body.message;\n    } else if (response.status === 404) {} else {}\n  });\n});",
+              "err": {},
+              "uuid": "44abc0df-cbed-42c2-a56e-ec81ce6fb170",
+              "parentUUID": "d4e4490e-a41a-4e84-a606-5883a6d1f0f6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "44abc0df-cbed-42c2-a56e-ec81ce6fb170"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 907,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

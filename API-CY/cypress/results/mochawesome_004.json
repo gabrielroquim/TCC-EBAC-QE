@@ -1,0 +1,151 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-04-12T23:46:04.044Z",
+    "end": "2023-04-12T23:46:04.772Z",
+    "duration": 728,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8dbbc9f0-cbac-407c-a6c8-09b4eea0739d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API_cupons.cy.js",
+      "file": "cypress\\e2e\\API_cupons.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fba7a4a8-bb8f-4219-84fb-cf835a698995",
+          "title": "API de cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "c406cd98-f543-4d81-82bd-f7a8982dc0df",
+              "title": "Testando os métodos da API de cupons",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Realizando um GET de cupons",
+                  "fullTitle": "API de cupons Testando os métodos da API de cupons Realizando um GET de cupons",
+                  "timedOut": null,
+                  "duration": 302,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: 'http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons',\n  headers: {\n    authorization: apiToken.authorization\n  }\n}).then(response => {\n  expect(response.status).to.equal(200);\n});",
+                  "err": {
+                    "message": "TypeError: Cannot read properties of undefined (reading 'authorization')",
+                    "estack": "TypeError: Cannot read properties of undefined (reading 'authorization')\n    at Context.eval (webpack:///./cypress/e2e/API_cupons.cy.js:12:49)",
+                    "diff": null
+                  },
+                  "uuid": "ba27818a-c5ab-400f-b24a-dde644465505",
+                  "parentUUID": "c406cd98-f543-4d81-82bd-f7a8982dc0df",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Realizando POST de cupom já existente",
+                  "fullTitle": "API de cupons Testando os métodos da API de cupons Realizando POST de cupom já existente",
+                  "timedOut": null,
+                  "duration": 342,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'POST',\n  url: 'http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons',\n  headers: {\n    authorization: apiToken.authorization\n  },\n  body: {\n    \"code\": \"nomeCupom\",\n    \"amount\": \"10\",\n    \"discount_type\": \"fixed_product\",\n    \"description\": \"Cupom de desconto de teste\"\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.body.data.status).to.equal(400);\n  expect(response.body.message).to.equal('O código de cupom já existe');\n});",
+                  "err": {
+                    "message": "TypeError: Cannot read properties of undefined (reading 'authorization')",
+                    "estack": "TypeError: Cannot read properties of undefined (reading 'authorization')\n    at Context.eval (webpack:///./cypress/e2e/API_cupons.cy.js:22:49)",
+                    "diff": null
+                  },
+                  "uuid": "668b9a24-2de1-4ea3-b2c2-913acceb43e2",
+                  "parentUUID": "c406cd98-f543-4d81-82bd-f7a8982dc0df",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "ba27818a-c5ab-400f-b24a-dde644465505",
+                "668b9a24-2de1-4ea3-b2c2-913acceb43e2"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 644,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

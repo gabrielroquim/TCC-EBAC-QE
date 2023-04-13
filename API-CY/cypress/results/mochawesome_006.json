@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-04-12T23:48:52.320Z",
+    "end": "2023-04-12T23:48:52.738Z",
+    "duration": 418,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "4c338927-5ab1-40b2-ba9f-308e595ab479",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API_cupons.cy.js",
+      "file": "cypress\\e2e\\API_cupons.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0c6be9f4-22e0-4c22-b36a-93b744a43257",
+          "title": "Teste da Funcionalidade Produtos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "43d5ad58-dc52-4ec0-b28e-c9a5840b13f9",
+              "title": "Testando os métodos da API de cupons EBAC-SHOP",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Realizando um GET de cupons",
+                  "fullTitle": "Teste da Funcionalidade Produtos Testando os métodos da API de cupons EBAC-SHOP Realizando um GET de cupons",
+                  "timedOut": null,
+                  "duration": 343,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: 'http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons',\n  headers: {\n    authorization: apiToken.authorization\n  }\n}).then(response => {\n  expect(response.status).to.equal(200);\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` must be provided a fully qualified `url` - one that begins with `http`. By default `cy.request()` will use either the current window's origin or the `baseUrl` in `cypress.config.js`. Neither of those values were present.\n\nhttps://on.cypress.io/request\n\nBecause this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `Teste da Funcionalidade Pro...`",
+                    "estack": "CypressError: `cy.request()` must be provided a fully qualified `url` - one that begins with `http`. By default `cy.request()` will use either the current window's origin or the `baseUrl` in `cypress.config.js`. Neither of those values were present.\n\nhttps://on.cypress.io/request\n\nBecause this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `Teste da Funcionalidade Pro...`\n    at Context.request (http://localhost:60962/__cypress/runner/cypress_runner.js:139541:78)\n    at wrapped (http://localhost:60962/__cypress/runner/cypress_runner.js:151174:43)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/support/commands.js:29:7)",
+                    "diff": null
+                  },
+                  "uuid": "1221cbbd-8b9b-4f9c-8161-b9ebf92e664e",
+                  "parentUUID": null,
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Realizando POST de cupom",
+                  "fullTitle": "Teste da Funcionalidade Produtos Testando os métodos da API de cupons EBAC-SHOP Realizando POST de cupom",
+                  "timedOut": null,
+                  "duration": 0,
+                  "state": "skipped",
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "let code = faker.internet.userName();\nlet amount = faker.random.number({\n  min: 1,\n  max: 15\n});\ncy.request({\n  method: 'POST',\n  url: 'http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons',\n  headers: {\n    authorization: apiToken.authorization\n  },\n  body: {\n    \"code\": code,\n    \"amount\": amount,\n    \"discount_type\": \"fixed_product\",\n    \"description\": \"Cupom de desconto\"\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.body.data.status).to.equal(200);\n});",
+                  "err": {},
+                  "uuid": "8246c7c7-04a4-4349-b713-90c2344466f2",
+                  "parentUUID": null,
+                  "isHook": false,
+                  "skipped": true
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "1221cbbd-8b9b-4f9c-8161-b9ebf92e664e"
+              ],
+              "pending": [],
+              "skipped": [
+                "8246c7c7-04a4-4349-b713-90c2344466f2"
+              ],
+              "duration": 343,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

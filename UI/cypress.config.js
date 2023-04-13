@@ -2,8 +2,7 @@ const { defineConfig } = require("cypress");
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
-  e2e: {
-    //specPattern: 'cypress/api/integration/*.cy.js',
+  e2e: { 
     specPattern: 'cypress/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: "http://lojaebac.ebaconline.art.br",
     setupNodeEvents(on, config) {
@@ -11,12 +10,7 @@ module.exports = defineConfig({
    
       return config;      
     }    
-
-  },  
-  integration: {
-    specPattern: 'cypress/api/integration/contrato_cupons.cy.js'
-
-  },
+  },   
   reporter: 'cypress-multi-reporters',
   reporterOptions: {
     configFile: 'reporter-config.json',
