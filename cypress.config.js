@@ -5,7 +5,7 @@ module.exports = defineConfig({
   projectId: 'x3oxe3',
   e2e: {
     //specPattern: 'cypress/api/integration/*.cy.js',
-    specPattern: 'cypress/**/*.cy.{js,jsx,ts,tsx}',
+    specPattern: 'ui/cypress/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: "http://lojaebac.ebaconline.art.br",
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {

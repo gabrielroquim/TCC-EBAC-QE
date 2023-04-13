@@ -5,13 +5,14 @@
   "main": "cypress.config.js",
   "scripts": {
     "cy:open": "npx cypress open",
+    "cypress": "npx cypress run",
     "cy:report": "npx mochawesome-merge ./cypress/results/mochawesome*.json  > cypress/results/report.json && npx marge cypress/results/report.json",
     "test:allure": "npx cypress run --env allure=true",
     "allure:open": "npx allure serve",
     "cy:dashboard": "cypress run --record --key 6303146-a7a4-4226-a249-bf1a12f2fdd8",
     "cyCypress": "npx cypress run",
-    "allureGenerate": "allure generate allure-results --clean && allure open",
-    "apiCypress": "npx cypress run ./integration/contrato_cupons.cy.js"
+    "allureGenerate": "allure generate allure-results --clean && allure open"
+ 
   },
   "author": "Gabriel Roquim",
   "license": "ISC",

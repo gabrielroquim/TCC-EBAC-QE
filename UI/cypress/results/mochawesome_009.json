@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-04-12T22:45:35.387Z",
+    "end": "2023-04-12T22:46:24.569Z",
+    "duration": 49182,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d0355ccd-0bd9-48f6-b91a-83682171222f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\[US-0001] – Adicionar item ao carrinho.cy.js",
+      "file": "cypress\\e2e\\[US-0001] – Adicionar item ao carrinho.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a852f932-689c-4f46-9268-d25982c3d8de",
+          "title": "Comprar Produtos",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login com sucesso",
+              "fullTitle": "Comprar Produtos Login com sucesso",
+              "timedOut": null,
+              "duration": 46837,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('perfil').then(dados => {\n  cy.login(dados.username, dados.password);\n});\ncy.get('.page-title').should('contain', 'Minha conta');\ncy.get('#primary-menu > .menu-item-629 > a').click();\n//cy.addProdutos('Abominable Hoodie', '36', 'Blue', 1)\ncy.addProdutos('Abominable Hoodie', 'L', 'Blue', 2);\ncy.addProdutos('Abominable Hoodie', 'XS', 'Blue', 2);\ncy.addProdutos('Abominable Hoodie', 'M', 'Green', 2);\ncy.get('.dropdown-toggle > .text-skin > .icon-basket').click();\ncy.get('[class=\"button checkout wc-forward\"]').eq(1).click();\ncy.get('#payment_method_cheque').click();\ncy.get('.showcoupon').click();\ncy.get('#coupon_code').type(\"PalmeirasVerdesd\");\ncy.get('.form-row-last > .button').click();\ncy.get('woocommerce-message').should('contain', 'Código de cupom aplicado com sucesso.');\ncy.get('#order_comments').type('Preciso receber embrulhado para presente');\ncy.get('#terms').click({\n  force: true\n});\ncy.get('#place_order').click({\n  force: true\n});\ncy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.');\ncy.get('.woocommerce-order-details__title').should('contain', 'Detalhes do pedido');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `woocommerce-message`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `woocommerce-message`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/[US-0001] – Adicionar item ao carrinho.cy.js:37:34)",
+                "diff": null
+              },
+              "uuid": "23b95764-6590-49a9-9e9d-b0051b00f05c",
+              "parentUUID": "a852f932-689c-4f46-9268-d25982c3d8de",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "23b95764-6590-49a9-9e9d-b0051b00f05c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 46837,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
